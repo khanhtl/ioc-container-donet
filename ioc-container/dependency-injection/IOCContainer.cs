@@ -21,12 +21,14 @@ public class IOCContainer
             return (T)serviceDescription.Implementation;
         }
 
-        var implementation = Activator.CreateInstance(serviceDescription.ServiceType);
+        var type = serviceDescription.ImplementaionType ?? serviceDescription.ServiceType;
+
+        var implementation = (T)Activator.CreateInstance(type);
         if (serviceDescription.ServiceLifeTime == ServiceLifeTime.Singleton)
         {
             serviceDescription.Implementation = implementation;
         }
 
-        return (T)implementation;
+        return implementation;
     }
 }

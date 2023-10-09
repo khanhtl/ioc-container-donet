@@ -6,21 +6,22 @@ class Program
     static void Main(string[] args)
     {
         var services = new ServiceCollection();
-        services.AddSingleton<RandomGuid>();
-        services.AddTransient<OtherRandomGuid>();
+        services.AddSingleton<IRandomService,RandomService>();
+        services.AddTransient<INewRandomService,NewRandomService>();
         var container = services.GetIOCContainer();
 
-        var firstRandom = container.GetService<RandomGuid>();
-        var secondRandom = container.GetService<RandomGuid>();
+        var randomService1 = container.GetService<IRandomService>();
+        var randomService2 = container.GetService<IRandomService>();
 
-        var thirdRandom = container.GetService<OtherRandomGuid>();
-        var fourthRandom = container.GetService<OtherRandomGuid>();
+        var newRandomService1 = container.GetService<INewRandomService>();
+        var newRandomService2 = container.GetService<INewRandomService>();
 
-        Console.WriteLine(firstRandom.Random);
-        Console.WriteLine(secondRandom.Random);
-        System.Console.WriteLine("------------------------------");
-        Console.WriteLine(thirdRandom.Random);
-        Console.WriteLine(fourthRandom.Random);
+        randomService1.Print();
+        randomService2.Print();
+        System.Console.WriteLine("---------------------");
+        newRandomService1.Print();
+        newRandomService2.Print();
+
 
     }
 }
