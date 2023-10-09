@@ -15,12 +15,18 @@ public class IOCContainer
         {
             throw new Exception($"Service of type {typeof(T).Name} is not registered!");
         }
-        
+
         if (serviceDescription.Implementation != null)
         {
             return (T)serviceDescription.Implementation;
         }
-        
-        return default;
+
+        var implementation = Activator.CreateInstance(serviceDescription.ServiceType);
+        if (serviceDescription.ServiceLifeTime == ServiceLifeTime.Singleton)
+        {
+            serviceDescription.Implementation = implementation;
+        }
+
+        return (T)implementation;
     }
 }

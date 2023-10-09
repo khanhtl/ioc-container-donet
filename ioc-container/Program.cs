@@ -6,8 +6,8 @@ class Program
     static void Main(string[] args)
     {
         var services = new ServiceCollection();
-        services.AddSingleton(new RandomGuid());
-        services.AddTransient(new OtherRandomGuid());
+        services.AddSingleton<RandomGuid>();
+        services.AddTransient<OtherRandomGuid>();
         var container = services.GetIOCContainer();
 
         var firstRandom = container.GetService<RandomGuid>();

@@ -5,10 +5,9 @@ public class ServiceDescription {
     public object Implementation { get; set; }
     public ServiceLifeTime ServiceLifeTime { get; set; } 
 
-    public ServiceDescription(object implementation, ServiceLifeTime serviceLifeTime)
+    public ServiceDescription(Type ServiceType, ServiceLifeTime serviceLifeTime)
     {
-        this.ServiceType = implementation.GetType();
-        this.Implementation = implementation;
+        this.ServiceType = ServiceType;
         this.ServiceLifeTime = serviceLifeTime;
     }
 }
