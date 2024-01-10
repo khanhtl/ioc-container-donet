@@ -1,5 +1,5 @@
 namespace DI;
-public interface IOtherRandomService
+public interface IScopedRandomService
 {
     public void Print();
 }

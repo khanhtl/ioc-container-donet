@@ -2,5 +2,6 @@ namespace DI;
 
 public enum ServiceLifeTime {
     Singleton,
-    Transient
+    Transient,
+    Scoped,
 }

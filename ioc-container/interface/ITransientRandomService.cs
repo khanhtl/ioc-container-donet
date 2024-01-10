@@ -1,6 +1,6 @@
 namespace DI;
 
-public interface INewRandomService
+public interface ITransientRandomService
 {
     public void Print();
 }

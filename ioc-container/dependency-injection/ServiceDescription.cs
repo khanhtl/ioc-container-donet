@@ -4,6 +4,7 @@ public class ServiceDescription {
     public Type ServiceType { get; set; }
     public Type ImplementaionType { get; set; }
     public object Implementation { get; set; }
+    public int RequestID = Program.RequestID;
     public ServiceLifeTime ServiceLifeTime { get; set; } 
 
     public ServiceDescription(Type serviceType, ServiceLifeTime serviceLifeTime)
